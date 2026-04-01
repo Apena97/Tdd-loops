@@ -11,7 +11,11 @@
  * echo("test", 1); // "test"
  */
 export function echo(word, n) {
-  // TODO
+  let result = "";
+  for (let i = 0; i < n; i++) {
+    result += word;
+  }
+  return result;
 }
 
 /**
@@ -27,7 +31,11 @@ export function echo(word, n) {
  * echoWithSpace("test", 1); // "test"
  */
 export function echoWithSpace(word, n) {
-  // TODO
+  let result = "";
+  for (let i = 0; i < n; i++) {
+    result += word + " ";
+  }
+  return result.trim();
 }
 
 /**
@@ -42,6 +50,11 @@ export function echoWithSpace(word, n) {
  * sumTo(100); // 5050
  */
 export function sumTo(n) {
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
+    sum += i;
+  }
+  return sum;
   // TODO
 }
 
@@ -58,7 +71,11 @@ export function sumTo(n) {
  * sumFromTo(2, 2); // 2
  */
 export function sumFromTo(a, z) {
-  // TODO
+  let sum = 0;
+  for (let i = a; i <= z; i++) {
+    sum += i;
+  }
+  return sum;
 }
 
 /**
@@ -73,9 +90,10 @@ export function sumFromTo(a, z) {
  * countdown(5); // logs 5, 4, 3, 2, 1
  */
 export function countdown(n) {
-  // TODO
+  for (let i = n; i >= 1; i--) {
+    console.log(i);
+  }
 }
-
 /**
  * @param {number} n - The ending number.
  * @returns {number} The sum of all odd numbers from 1 to n, inclusive.
@@ -88,7 +106,11 @@ export function countdown(n) {
  * sumOddsToN(1); // 1
  */
 export function sumOddsToN(n) {
-  // TODO
+  let sum = 0;
+  for (let i = 1; i <= n; i += 2) {
+    sum += i;
+  }
+  return sum;
 }
 
 /**
@@ -108,7 +130,18 @@ export function sumOddsToN(n) {
  * getGrowthTime(5, 78); // 80
  */
 export function getGrowthTime(start, target) {
-  // TODO
+  let time = 0;
+  let current = start;
+  if (start <= 0) {
+    return undefined;
+  } else if (start >= target) {
+    return 0;
+  }
+  while (current < target) {
+    current *= 2;
+    time += 20;
+  }
+  return time;
 }
 
 /**
@@ -128,7 +161,19 @@ export function getGrowthTime(start, target) {
  * getCompoundTime(30000, 0.04, 50000); // 14
  */
 export function getCompoundTime(start, rate, target) {
-  // TODO
+  let years = 0;
+  let current = start;
+  if (start <= 0 || rate <= 0) {
+    return undefined;
+  }
+  if (start >= target) {
+    return 0;
+  }
+  while (current < target) {
+    current *= 1 + rate;
+    years++;
+  }
+  return years;
 }
 
 /**
@@ -154,7 +199,20 @@ export function getCompoundTime(start, rate, target) {
  * moveWater(7, 3); // 1
  */
 export function moveWater(colander, bucket) {
-  // TODO
+  let trips = 0;
+  let currentCapacity = colander;
+  let totalWaterMoved = 0;
+  if (colander <= 0) {
+    return undefined;
+  } else if (bucket <= 0) {
+    return 0;
+  }
+  while (totalWaterMoved < bucket) {
+    totalWaterMoved += currentCapacity;
+    trips++;
+    currentCapacity = Math.max(1, currentCapacity - 1);
+  }
+  return trips;
 }
 
 /**
@@ -174,5 +232,15 @@ export function moveWater(colander, bucket) {
  * fizzbuzz(15); // logs 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz
  */
 export function fizzbuzz(n) {
-  // TODO
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("fizzbuzz");
+    } else if (i % 3 === 0) {
+      console.log("fizz");
+    } else if (i % 5 === 0) {
+      console.log("buzz");
+    } else {
+      console.log(i);
+    }
+  }
 }
